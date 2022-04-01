@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/header.ejs') %>
+</head>
+<body>
+
+<%- include('partials/dropdown.ejs') %>
+
+<main>
+    <!-- split the catalog by event -->
+    <% if(catalog){%>
+        <%let events = [];  %>
+        <%let meetings = [];  %>
+    <%for(var i=0;i<catalog.length;i++){  %>
+        <%if(catalog[i].topic === 'meeting'){  %>
+            <%meetings.push(catalog[i])  %>
+        <%}else{  %>
+            <%events.push(catalog[i])  %>
+        <% } }%>
+
+        <!-- post the links to each meeting -->
+    <h2>Meetings</h2>
+    <ul>
+        <%for(var i=0;i<meetings.length;i++){  %>
+            <li><a href="../connection?id=<%=meetings[i].id%>"><%=meetings[i].name%></a></li>
+        <%}  %>
+    </ul>
+
+        <!-- post the links to each event -->
+    <h2>Events</h2>
+    <ul>
+        <%for(var i=0;i<events.length;i++){  %>
+        <li><a href="../connection?id=<%=events[i].id%>"><%=events[i].name%></a></li>
+        <%}  %>
+    </ul>
+
+        <!-- failure condition -->
+    <%}else{%>
+        <p>no catalog</p>
+    <%}%>
+</main>
+</body>
+<%- include('partials/footer.ejs') %>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/header.ejs') %>
+</head>
+
+<body>
+
+<%- include('partials/dropdown.ejs') %>
+
+<main>
+    <% if(connection != undefined){ %>
+        <form action="updateConnection?id=<%=connection.id%>" method="post">
+            connection ID = <%=connection.id%> <br>
+            topic <input type="text" class="connection" id="topic" name="topic" value="<%=connection.topic%>"> <br>
+            name <input type="text" class="connection" id="name" name="name" value="<%=connection.name%>"><br>
+            details <input type="text" class="connection" id="details" name="details" value="<%=connection.details%>"><br>
+            where <input type="text" class="connection" id="location" name="location" value="<%=connection.location%>"><br>
+            when <input type="text" class="connection" id="date" name="date" value="<%=connection.date%>"><br>
+            <input type="submit" class="connection" id="create" value="Update connection" ><br>
+        </form>
+    <% }else{ %>
+        <form action="newConnection" method="post">
+            topic <input type="text" class="connection" id="topic" name="topic"> <br>
+            name <input type="text" class="connection" id="name" name="name"><br>
+            details <input type="text" class="connection" id="details" name="details"><br>
+            where <input type="text" class="connection" id="location" name="location"><br>
+            when <input type="text" class="connection" id="date" name="date"><br>
+            <input type="submit" class="connection" id="create" value="Create connection"><br>
+        </form>
+    <% } %>
+</main>
+</body>
+
+<%- include('partials/footer.ejs') %>
+
+</html>

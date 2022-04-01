@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<%- include('partials/header.ejs') %>
+</head>
+
+<body>
+<%- include('partials/dropdown.ejs') %>
+<main>
+    <h2>Your Connections</h2>
+    <table>
+        <tr>
+            <th>Connection</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>RSVP</th>
+            <th></th>
+        </tr>
+        <%for (var i=0; i<Object.keys(catalog).length;i++){%>
+        <%var con = catalog[Object.keys(catalog)[i]];%>
+        <tr>
+            <td><%=con.con.name%></td>
+            <td><%=con.con.topic%></td>
+            <td><%=con.con.location%></td>
+            <td><%if(con.rsvp==='y'){%>yes<%}else if(con.rsvp==='n'){%>no<%} else{%>maybe<%}%></td>
+            <td>
+                <a href="../connection?id=<%=con.con.id%>" class="update">Update</a>
+                <a href="../user/delete?id=<%=con.con.id%>" class="delete">Delete</a>
+                <% if(uid == con.con.user){%>
+                    <a href="../newConnection?id=<%=con.con.id%>" class="edit">Edit</a>
+                <%}%>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+</main>
+</body>
+<%- include('partials/footer.ejs') %>
+</html>

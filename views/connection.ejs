@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header.ejs') %>
+</head>
+<body>
+
+<%- include('partials/dropdown.ejs') %>
+
+<main>
+    <!--check for failure -->
+    <% if (selection != undefined) { %>
+    <!-- on success, post information -->
+    <h2><%= selection.topic %></h2>
+
+    <img src="assets/images/NordVPn.jpg" width="100" height="100">
+    <ul>
+        <li>Hosted by Sylvia</li>
+        <li><%= selection.date %></li>
+        <li>Via Zoom (insert Link Here)</li>
+    </ul>
+
+    <h2>Details</h2>
+    <p><%= selection.details %></p>
+
+    <p>Are you going?</p>
+    <div class="buttons">
+        <a href="user/rsvp?id=<%= selection.id %>&r=y" class="yes">yes</a>
+        <a href="user/rsvp?id=<%= selection.id %>&r=n" class="no">no</a>
+        <a href="user/rsvp?id=<%= selection.id %>&r=m" class="maybe">maybe</a>
+    </div>
+
+    <!--failure condition -->
+    <% }else{ %>
+        <p> invalid Connection </p>
+    <% } %>
+
+</main>
+</body>
+<%- include('partials/footer.ejs') %>
+</html>

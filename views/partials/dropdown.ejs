@@ -1,0 +1,28 @@
+<nav>
+    <ul>
+        <li>
+            <div class="dropdown">
+                <button class="dropbtn">connections</button>
+                <div class="dropcontent">
+                    <a href="connections">Connections</a>
+                    <a href="savedConnections">My Connections</a>
+                    <a href="newConnection">Start a new connection</a>
+                </div>
+            </div>
+        </li>
+        <li class="login">
+            <div class="dropdown">
+                <button class="dropbtn">profile</button>
+                <div class="dropcontent">
+                    <%if(logged){%>
+                        <a href="user/logout">Logout</a>
+                    <%}else{%>
+                        <a href="login">Login</a>
+                        <a href="signUp">Sign up</a>
+                    <%}%>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+<br>
